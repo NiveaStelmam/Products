@@ -1,17 +1,34 @@
 package io.github.niveastelmam.ProductAPI.domain;
 
-public class Produto {
+import jakarta.persistence.*;
 
-    private String id;
+import java.util.UUID;
+
+// POJO - Plain Old Java Object (modelo de negócio)
+@Entity
+public class Product {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private UUID id;
+
+    @Column(name = "nome")
     private String name;
+
+    @Column(name = "descrição")
     private String description;
+
+    @Column(name = "preço")
     private Double price;
 
-    public String getId() {
+
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

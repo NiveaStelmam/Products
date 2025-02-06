@@ -12,8 +12,8 @@ spring:
         # format_sql: true (format sql with indentation and line break)
     generate-ddl: true
     hibernate:
-      ddl-auto: create
-server:  # necessário para versão atual
+      ddl-auto: create 
+server:  # necessario para versao atual
    error:
      include-message: always
 
@@ -21,3 +21,4 @@ server:  # necessário para versão atual
 
 
 
+ 
