@@ -4,7 +4,7 @@ import io.github.niveastelmam.ProductAPI.domain.Product;
 import io.github.niveastelmam.ProductAPI.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
 
 @RestController // API
@@ -37,6 +37,26 @@ public class ProductController {
     @DeleteMapping("/{id}")
     public void deletar (@PathVariable("id") UUID id){
         productRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public void atualizar(@PathVariable("id") UUID id, @RequestBody Product product){
+
+        product.setId(id);
+        productRepository.save(product);
+    }
+
+    @GetMapping
+    public List<Product> buscar(@RequestParam("name") String name){
+
+        return productRepository.findByName(name);
+
+    }
+
+    @GetMapping("/all")
+    public List<Product> getAllProducts(){
+
+       return productRepository.findAll();
     }
 
 
