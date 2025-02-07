@@ -18,7 +18,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product salvar(@RequestBody Product product){
+    public Product save(@RequestBody Product product){
        System.out.println("Produto Recebido: " + product);
 
        productRepository.save(product);
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product obterPorId(@PathVariable("id") UUID id) {
+    public Product getById(@PathVariable("id") UUID id) {
     //    Optional<Product> product = productRepository.findById(id);
     //    return product.isPresent() ? product.get() : null;
 
@@ -35,26 +35,26 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar (@PathVariable("id") UUID id){
+    public void delete (@PathVariable("id") UUID id){
         productRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
-    public void atualizar(@PathVariable("id") UUID id, @RequestBody Product product){
+    public void update(@PathVariable("id") UUID id, @RequestBody Product product){
 
         product.setId(id);
         productRepository.save(product);
     }
 
     @GetMapping
-    public List<Product> buscar(@RequestParam("name") String name){
+    public List<Product> searchByParam(@RequestParam("name") String name){
 
         return productRepository.findByName(name);
 
     }
 
     @GetMapping("/all")
-    public List<Product> getAllProducts(){
+    public List<Product> getAll(){
 
        return productRepository.findAll();
     }
