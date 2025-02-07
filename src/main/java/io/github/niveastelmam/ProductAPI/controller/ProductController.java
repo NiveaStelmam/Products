@@ -34,5 +34,10 @@ public class ProductController {
         return  productRepository.findById(id).orElse(null);
     }
 
+    @DeleteMapping("/{id}")
+    public void deletar (@PathVariable("id") UUID id){
+        productRepository.deleteById(id);
+    }
+
 
 }
